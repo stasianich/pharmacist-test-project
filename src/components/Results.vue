@@ -86,6 +86,10 @@ export default {
     height: 100vh;
     display: flex;
     justify-content: space-between;
+
+    @media (max-width: 700px) {
+      flex-direction: column;
+    }
   }
 
   .left-section {
@@ -95,7 +99,18 @@ export default {
     padding-top: 70px;
     padding-left: 70px;
 
-    @media (max-width: 1025px) {
+    @media (max-width: 700px) {
+      max-width: 700px;
+      padding-left: 0;
+      padding-top: 20px;
+    }
+
+    @media (min-width: 701px) and (max-width: 1023px) {
+      padding-top: 20px;
+      padding-left: 30px;
+    }
+
+    @media (min-width: 701px) and (max-height: 930px) {
       padding-top: 20px;
       padding-left: 30px;
     }
@@ -103,15 +118,25 @@ export default {
 
   .go-to-main-page {
     display: block;
+    min-width: 70px;
+    min-height: 70px;
     width: 70px;
     height: 70px;
     background: url(../assets/images/FinalPage/btn_home_for_results_page.svg) no-repeat center;
     margin-bottom: 120px;
+    transition: transform 400ms;
 
-    @media (max-width: 1025px) {
-      width: 70px;
-      height: 70px;
+    &:hover {
+      transform: scale(0.8);
+    }
+
+    @media (max-width: 1023px) {
       margin-bottom: 100px;
+      margin-left: 10px;
+    }
+
+    @media (max-height: 930px) {
+      margin-bottom: 50px;
     }
   }
 
@@ -121,17 +146,33 @@ export default {
     height: 60px;
     background: linear-gradient(90deg, #D9D9D9 0%, #A1A1A1 100%);
     border-radius: 100px;
-    margin-top: 250px;
+    margin-top: 200px;
     margin-left: 60px;
     text-align: center;
     font-size: 24px;
     line-height: 59px;
     color: #FFFFFF;
+    cursor: pointer;
 
-    @media (max-width: 1025px) {
+    &:hover {
+      box-shadow: 0 0 15px #A8A8A8;
+    }
+
+    @media (max-width: 700px) {
+      margin: 50px auto;
+    }
+
+    @media (min-width: 701px) and (max-width: 1023px) {
       width: 200px;
       font-size: 18px;
-      margin-top: 180px;
+      margin-top: 120px;
+      margin-left: 30px;
+    }
+
+    @media (min-width: 701px) and (max-height: 930px) {
+      width: 200px;
+      font-size: 18px;
+      margin-top: 120px;
       margin-left: 30px;
     }
   }
@@ -142,7 +183,17 @@ export default {
     flex-direction: column;
     row-gap: 40px;
 
-    @media (max-width: 1025px) {
+    @media (max-width: 700px) {
+      margin-left: 0;
+      padding: 0 8px;
+    }
+
+    @media (min-width: 701px) and (max-width: 1025px) {
+      margin-left: 30px;
+      row-gap: 30px;
+    }
+
+    @media (min-width: 701px) and (max-height: 930px) {
       margin-left: 30px;
       row-gap: 30px;
     }
@@ -167,7 +218,11 @@ export default {
       row-gap: 20px;
       color: #424242;
 
-      @media (max-width: 1025px) {
+      @media (max-width: 1023px) {
+        row-gap: 10px;
+      }
+
+      @media (max-height: 930px) {
         row-gap: 10px;
       }
     }
@@ -178,7 +233,12 @@ export default {
       font-size: 48px;
       line-height: 59px;
 
-      @media (max-width: 1025px) {
+      @media (max-width: 1023px) {
+        font-size: 34px;
+        line-height: 50px;
+      }
+
+      @media (max-height: 930px) {
         font-size: 42px;
         line-height: 50px;
       }
@@ -199,7 +259,12 @@ export default {
       letter-spacing: 0.02em;
       color: #8E9AD5;
 
-      @media (max-width: 1025px) {
+      @media (max-width: 1023px) {
+        font-size: 28px;
+        line-height: 32px;
+      }
+
+      @media (max-height: 930px) {
         font-size: 28px;
         line-height: 32px;
       }
@@ -212,7 +277,12 @@ export default {
       letter-spacing: 0.02em;
       color: #8E9AD5;
 
-      @media (max-width: 1025px) {
+      @media (max-width: 1023px) {
+        font-size: 28px;
+        line-height: 32px;
+      }
+
+      @media (max-height: 930px) {
         font-size: 28px;
         line-height: 32px;
       }
@@ -223,7 +293,12 @@ export default {
       line-height: 29px;
       color: #424242;
 
-      @media (max-width: 1025px) {
+      @media (max-width: 1023px) {
+        font-size: 20px;
+        list-style: 26px;
+      }
+
+      @media (max-height: 930px) {
         font-size: 20px;
         list-style: 26px;
       }
@@ -234,8 +309,16 @@ export default {
     &__image {
       height: 820px;
 
-      @media (max-width: 1025px) {
-        height: 480px;
+      @media (max-width: 700px) {
+        display: none;
+      }
+
+      @media (min-width: 701px) and (max-width: 1025px) {
+        height: 400px;
+      }
+
+      @media (min-width: 701px) and (max-height: 930px) {
+        height: 450px;
       }
     }
   }

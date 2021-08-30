@@ -19,18 +19,18 @@
 
 <style lang="scss">
   .main-page {
-    // max-width: 1440px;
     width: 100vw;
     height: 100vh;
     background: linear-gradient(63.53deg, rgba(45, 133, 80, 0.35) 16.62%, rgba(94, 110, 194, 0.35) 83.38%),
                 url(../assets/images/MainPage/doctor.jpg) no-repeat;
-    // background-size: 100% 100%;
     background-size: cover;
   }
 
   .title-circle {
     width: 860px;
     height: 860px;
+    max-width: 100vh;
+    max-height: 100vh;
     border-radius: 50%;
     display: flex;
     flex-direction: column;
@@ -42,17 +42,35 @@
     top: -30px;
     padding-bottom: 160px;
 
-    @media (max-width: 1025px) {
+    @media (max-width: 700px) {
+      width: 300px;
+      height: 300px;
+      left: 0;
+      margin: 0 auto;
+      padding-bottom: 60px;
+    }
+
+    @media (min-width: 700px) and (max-width: 1023px) {
+      width: 560px;
+      height: 560px;
+      padding-bottom: 120px;
+    }
+
+    @media (min-width: 701px) and (max-height: 930px) {
       width: 560px;
       height: 560px;
       padding-bottom: 120px;
     }
 
     &__text {
-      max-width: 500px;
+      max-width: 700px;
       display: flex;
       flex-direction: column;
       align-items: baseline;
+
+      @media (max-width: 700px) {
+        max-width: 210px;
+      }
     }
 
     &__start-button {
@@ -60,7 +78,6 @@
       height: 90px;
       border-radius: 100px;
       background: #FFFFFF;
-
       font-family: "Montserrat";
       font-style: normal;
       font-weight: bold;
@@ -69,7 +86,25 @@
       text-align: center;
       color: #8E9AD5;
 
-      @media (max-width: 1025px) {
+      &:hover {
+        box-shadow: 0 0 100px #8E9AD5;
+      }
+
+      @media (max-width: 700px) {
+        width: 182px;
+        height: 40px;
+        font-size: 20px;
+        line-height: 40px;
+      }
+
+      @media (min-width: 701px) and (max-width: 1023px) {
+        width: 252px;
+        height: 50px;
+        font-size: 26px;
+        line-height: 50px;
+      }
+
+      @media (min-width: 701px) and (max-height: 930px) {
         width: 252px;
         height: 50px;
         font-size: 26px;
@@ -87,7 +122,17 @@
         color: #FFFFFF;
         text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-        @media (max-width: 1025px) {
+        @media (max-width: 700px) {
+          font-size: 16px;
+          line-height: 18px;
+        }
+
+        @media (min-width: 901px) and (max-width: 1023px) {
+          font-size: 30px;
+          line-height: 36px;
+        }
+
+        @media (min-width: 901px) and (max-height: 930px) {
           font-size: 30px;
           line-height: 36px;
         }
@@ -100,7 +145,19 @@
         color: #FFFFFF;
         padding-bottom: 120px;
 
-        @media (max-width: 1025px) {
+        @media (max-width: 700px) {
+          font-size: 28px;
+          line-height: 30px;
+          padding-bottom: 20px;
+        }
+
+        @media (min-width: 701px) and (max-width: 1023px) {
+          font-size: 40px;
+          line-height: 46px;
+          padding-bottom: 70px;
+        }
+
+        @media (min-width: 701px) and (max-height: 930px) {
           font-size: 40px;
           line-height: 46px;
           padding-bottom: 70px;

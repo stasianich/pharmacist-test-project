@@ -3,11 +3,12 @@
     <nav class="sidebar__nav nav">
       <router-link to="/" class="nav__home">
       </router-link>
-      <div
+      <button
+        type="button"
         v-on:click="$emit('reset-game')"
         class="nav__retry"
       >
-      </div>
+      </button>
     </nav>
 
     <section class="status">
@@ -76,20 +77,29 @@ export default {
 
 <style lang="scss">
   .sidebar {
-    width: 33%;
-    height: 100vh;
+    width: 33vw;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     background: linear-gradient(63.53deg, rgba(45, 133, 80, 0.7) 16.62%, rgba(94, 110, 194, 0.7) 83.38%);
     z-index: 2;
+
+    @media (max-width: 700px) {
+      width: 100vw;
+      height: 100%;
+    }
   }
 
   .nav {
     padding-left: 50px;
     padding-top: 70px;
 
-    @media (max-width: 1025px) {
+    @media (max-width: 1023px) {
+      padding-top: 40px;
+    }
+
+    @media (max-height: 930px) {
       padding-top: 40px;
     }
 
@@ -97,11 +107,21 @@ export default {
       display: inline-block;
       width: 70px;
       height: 70px;
+      border-radius: 50%;
       background: url(../assets/images/Game/btn_home.svg) no-repeat center;
       background-size: cover;
       margin-right: 35px;
 
-      @media (max-width: 1025px) {
+      &:hover {
+        box-shadow: 0 0 25px rgb(243, 177, 174);
+      }
+
+      @media (max-width: 1023px) {
+        width: 50px;
+        height: 50px;
+      }
+
+      @media (max-height: 930px) {
         width: 50px;
         height: 50px;
       }
@@ -111,10 +131,22 @@ export default {
       display: inline-block;
       width: 70px;
       height: 70px;
+      border-radius: 50%;
       background: url(../assets/images/Game/btn_retry.svg) no-repeat center;
       background-size: 198px 198px;
+      cursor: pointer;
 
-      @media (max-width: 1025px) {
+      &:hover {
+        box-shadow: 0 0 25px rgb(243, 177, 174);
+      }
+
+      @media (max-width: 1023px) {
+        width: 50px;
+        height: 50px;
+        background-size: 146px 146px;
+      }
+
+      @media (max-height: 930px) {
         width: 50px;
         height: 50px;
         background-size: 146px 146px;
@@ -126,7 +158,15 @@ export default {
     margin-top: 290px;
     margin-left: 40px;
 
-    @media (max-width: 1025px) {
+    @media (max-width: 700px) {
+      margin-top: 40px;
+    }
+
+    @media (min-width: 701px) and (max-width: 1023px) {
+      margin-top: 190px;
+    }
+
+    @media (min-width: 701px) and (max-height: 930px) {
       margin-top: 190px;
     }
 
@@ -136,7 +176,13 @@ export default {
       color: #FFFFFF;
       margin-bottom: 30px;
 
-      @media (max-width: 1025px) {
+      @media (max-width: 1023px) {
+        font-size: 26px;
+        line-height: 34px;
+        margin-bottom: 20px;
+      }
+
+      @media (max-height: 930px) {
         font-size: 26px;
         line-height: 34px;
         margin-bottom: 20px;
@@ -151,7 +197,15 @@ export default {
       column-gap: 20px;
       margin-right: 30px;
 
-      @media (max-width: 1025px) {
+      @media (max-width: 700px) {
+        margin-bottom: 20px;
+      }
+
+      @media (max-width: 1023px) {
+        row-gap: 20px;
+      }
+
+      @media (max-height: 930px) {
         row-gap: 20px;
       }
     }
@@ -167,7 +221,13 @@ export default {
     box-shadow: 0px 0px 50px rgba(131, 42, 64, 0.4);
     border-radius: 40px;
 
-    @media (max-width: 1025px) {
+    @media (max-width: 1023px) {
+      width: 130px;
+      height: 60px;
+      padding: 7px;
+    }
+
+    @media (max-height: 930px) {
       width: 130px;
       height: 60px;
       padding: 7px;
@@ -180,7 +240,13 @@ export default {
       line-height: 59px;
       color: #424242;
 
-      @media (max-width: 1025px) {
+      @media (max-width: 1023px) {
+        width: 60px;
+        font-size: 38px;
+        line-height: 48px;
+      }
+
+      @media (max-height: 930px) {
         width: 60px;
         font-size: 38px;
         line-height: 48px;
@@ -201,7 +267,13 @@ export default {
     background-color: rgba(255, 255, 255, 0.15);
     text-align: center;
 
-    @media (max-width: 1025px) {
+    @media (max-width: 1023px) {
+      height: 120px;
+      font-size: 30px;
+      line-height: 40px;
+    }
+
+    @media (max-height: 930px) {
       height: 120px;
       font-size: 30px;
       line-height: 40px;

@@ -17,9 +17,9 @@
     />
 
     <section class="main-board">
-
       <div
         class="patient-card"
+        @touchstart="touchStart"
         v-bind:class="{
             'card-success-first-pill': this.showMark === 'Препарат 1',
             'card-success-second-pill': this.showMark === 'Препарат 2',
@@ -186,7 +186,45 @@ export default {
       }
 
       clearTimeout();
-    }
+    },
+
+    touchStart (touchEvent) {
+      if (touchEvent.changedTouches.length !== 1) {
+        return;
+      }
+      const posXStart = touchEvent.changedTouches[0].clientX;
+      const posYStart = touchEvent.changedTouches[0].clientY;
+
+      addEventListener('touchend',
+        (touchEvent) => this.touchEnd(touchEvent, posXStart, posYStart), {once: true}
+      );
+    },
+
+    touchEnd (touchEvent, posXStart, posYStart) {
+      if (touchEvent.changedTouches.length !== 1) {
+        return;
+      }
+
+      const posXEnd = touchEvent.changedTouches[0].clientX;
+      const posYEnd = touchEvent.changedTouches[0].clientY;
+
+      const xDifferent = posXEnd - posXStart;
+      const yDifferent = posYEnd - posYStart;
+
+      if (Math.abs(xDifferent) > Math.abs(yDifferent)) {
+        if (xDifferent > 0) {
+          this.updateBoard(3); // swipe right
+        } else {
+          this.updateBoard(1); // swipe left
+        }
+      } else if (Math.abs(xDifferent) < Math.abs(yDifferent)) {
+        if (yDifferent < 0) {
+          this.updateBoard(2); // swipe up
+        } else {
+          return; // swipe down
+        }
+      }
+    },
   }
 }
 </script>
@@ -194,14 +232,21 @@ export default {
 <style lang="scss">
   .game-page {
     width: 100vw;
-    max-width: 1700px;
+    max-width: 2000px;
     display: flex;
-    // justify-content: space-between;
     background-color: #FFFFFF;
+
+    @media (max-width: 700px) {
+      flex-direction: column;
+    }
+
+    @media (min-width: 701px) and (min-width: 1880px) {
+      margin: 0 auto;
+    }
   }
 
   .main-board {
-    width: 67%;
+    width: 67vw;
     padding-top: 130px;
     padding-bottom: 64px;
     display: flex;
@@ -209,8 +254,17 @@ export default {
     justify-content: space-between;
     align-items: center;
 
-    @media (max-width: 1025px) {
+    @media (max-width: 700px) {
+      width: 100vw;
+    }
+
+    @media (max-width: 1023px) {
       padding-top: 80px;
+      padding-bottom: 34px;
+    }
+
+    @media (max-height: 930px) {
+      padding-top: 60px;
       padding-bottom: 34px;
     }
   }
@@ -224,22 +278,40 @@ export default {
     align-items: center;
     box-shadow: 0px 0px 40px rgba(127, 127, 127, 0.4);
     border-radius: 40px;
+
+    @media (max-width: 700px) {
+      width: 300px;
+      height: 520px;
+      margin-bottom: 40px;
+    }
     
-    @media (max-width: 1025px) {
+    @media (min-width: 701px) and (max-width: 1023px) {
+      width: 420px;
+      height: 500px;
+    }
+
+    @media (min-width: 701px) and (max-height: 930px) {
       width: 420px;
       height: 500px;
     }
 
     &__photo {
       width: 100%;
-      // height: 100%;
       object-fit: fill;
     }
 
     &__text {
       width: 420px;
 
-      @media (max-width: 1025px) {
+      @media (max-width: 700px) {
+        width: 250px;
+      }
+
+      @media (min-width: 701px) and (max-width: 1023px) {
+        width: 360px;
+      }
+
+      @media (min-width: 701px) and (max-height: 930px) {
         width: 360px;
       }
     }
@@ -250,7 +322,13 @@ export default {
       line-height: 39px;
       color: #8E9AD5;
 
-      @media (max-width: 1025px) {
+      @media (max-width: 1023px) {
+        padding-top: 15px;
+        font-size: 26px;
+        line-height: 38px;
+      }
+
+      @media (max-height: 930px) {
         padding-top: 15px;
         font-size: 26px;
         line-height: 38px;
@@ -261,7 +339,12 @@ export default {
       font-size: 26px;
       line-height: 30px;
 
-      @media (max-width: 1025px) {
+      @media (max-width: 1023px) {
+        font-size: 22px;
+        line-height: 28px;
+      }
+
+      @media (max-height: 930px) {
         font-size: 22px;
         line-height: 28px;
       }
@@ -274,7 +357,13 @@ export default {
     justify-content: space-between;
     padding: 0 30px;
 
-    @media (max-width: 1025px) {
+    @media (max-width: 700px) {
+      flex-direction: column;
+      align-items: center;
+      row-gap: 10px;
+    }
+
+    @media (max-width: 1023px) {
       padding: 0 20px;
     }
 
@@ -288,9 +377,21 @@ export default {
       font-size: 28px;
       line-height: 34px;
       color: #FFFFFF;
+      cursor: pointer;
+
+      &:hover {
+        transform: translateY(-5px);
+        transition: transform 400ms;
+      }
 
       @media (max-width: 1025px) {
         width: 150px;
+        height: 70px;
+        font-size: 22px;
+      }
+
+      @media (max-height: 930px) {
+        width: 250px;
         height: 70px;
         font-size: 22px;
       }
