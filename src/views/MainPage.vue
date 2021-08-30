@@ -19,6 +19,7 @@
 
 <style lang="scss">
   .main-page {
+    // max-width: 1440px;
     width: 100vw;
     height: 100vh;
     background: linear-gradient(63.53deg, rgba(45, 133, 80, 0.35) 16.62%, rgba(94, 110, 194, 0.35) 83.38%),
@@ -41,6 +42,12 @@
     top: -30px;
     padding-bottom: 160px;
 
+    @media (max-width: 1025px) {
+      width: 560px;
+      height: 560px;
+      padding-bottom: 120px;
+    }
+
     &__text {
       max-width: 500px;
       display: flex;
@@ -61,6 +68,13 @@
       line-height: 90px;
       text-align: center;
       color: #8E9AD5;
+
+      @media (max-width: 1025px) {
+        width: 252px;
+        height: 50px;
+        font-size: 26px;
+        line-height: 50px;
+      }
     }
   }
 
@@ -72,6 +86,11 @@
         padding-bottom: 29px;
         color: #FFFFFF;
         text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+        @media (max-width: 1025px) {
+          font-size: 30px;
+          line-height: 36px;
+        }
       }
 
       &__game-name {
@@ -80,6 +99,12 @@
         letter-spacing: 0.02em;
         color: #FFFFFF;
         padding-bottom: 120px;
+
+        @media (max-width: 1025px) {
+          font-size: 40px;
+          line-height: 46px;
+          padding-bottom: 70px;
+        }
       }
     }
 </style>

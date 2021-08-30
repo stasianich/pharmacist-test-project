@@ -1,26 +1,55 @@
 <template>
-  <div class="game-page">
+  <Results
+    v-if="this.count < 0"
+    v-bind:pills="this.pills"
+    v-bind:totalAmount="this.patients.length"
+    @reset-game="resetGame"
+  />
+  <div
+    class="game-page"
+    v-else
+  >
     <SideBar
       v-bind:pills="pills"
       v-bind:count="count"
+      v-bind:patientsAmount="this.patients.length"
       @reset-game="resetGame"
     />
 
     <section class="main-board">
 
-      <div class="patient-card">
+      <div
+        class="patient-card"
+        v-bind:class="{
+            'card-success-first-pill': this.showMark === 'Препарат 1',
+            'card-success-second-pill': this.showMark === 'Препарат 2',
+            'card-success-third-pill': this.showMark === 'Препарат 3',
+          }"
+      >
         <img
-          v-bind:src="patients[count - 1].photo"
+          v-bind:src="patients[count].photo"
           alt="Patient`s photo"
           class="patient-card__photo"
         >
         <div class="patient-card__text">
             <h3 class="patient-card__title">
-            {{ patients[count - 1].name}}
+            {{ patients[count].name}}
           </h3>
           <article class="patient-card__description">
-            {{ patients[count - 1].description}}
+            {{ patients[count].description}}
           </article>
+        </div>
+
+        <div
+          class="mark-success"
+          v-if="this.showMark"
+          v-bind:class="{
+            'first-pill-success': this.showMark === 'Препарат 1',
+            'second-pill-success': this.showMark === 'Препарат 2',
+            'third-pill-success': this.showMark === 'Препарат 3',
+          }"
+        >
+          {{ this.showMark }}
         </div>
       </div>
 
@@ -54,6 +83,7 @@
 
 <script>
 import SideBar from '@/components/SideBar.vue';
+import Results from '@/components/Results.vue';
 
 export default {
   data() {
@@ -105,11 +135,13 @@ export default {
         'secondPill': 0,
         'thirdPill': 0,
       },
-      count: 5,
+      count: 4,
+      showMark: '',
     }
   },
   components: {
     SideBar,
+    Results,
   },
   methods: {
     resetGame() {
@@ -118,29 +150,42 @@ export default {
         'secondPill': 0,
         'thirdPill': 0,
       };
-      this.count = 5;
+      this.count = 4;
     },
 
     updateBoard(id) {
+      const timeoutDuration = 600;
+
       switch(id) {
         case 1:
+          this.showMark = 'Препарат 1';
           this.pills['firstPill'] += 1;
-          this.count--;
+          setTimeout(() => {
+            this.showMark = '';
+            this.count--;
+          }, timeoutDuration);
           break;
+
         case 2:
+          this.showMark = 'Препарат 2';
           this.pills['secondPill'] += 1;
-          this.count--;
+          setTimeout(() => {
+            this.showMark = '';
+            this.count--;
+          }, timeoutDuration);
           break;
+
         case 3:
+          this.showMark = 'Препарат 3';
           this.pills['thirdPill'] += 1;
-          this.count--;
+          setTimeout(() => {
+            this.showMark = '';
+            this.count--;
+          }, timeoutDuration);
           break;
       }
 
-      if (this.count === 0) {
-        console.log(this.pills);
-        return;
-      }
+      clearTimeout();
     }
   }
 }
@@ -149,8 +194,9 @@ export default {
 <style lang="scss">
   .game-page {
     width: 100vw;
+    max-width: 1700px;
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
     background-color: #FFFFFF;
   }
 
@@ -162,25 +208,40 @@ export default {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+
+    @media (max-width: 1025px) {
+      padding-top: 80px;
+      padding-bottom: 34px;
+    }
   }
 
   .patient-card {
+    position: relative;
     width: 540px;
-    height: 590px;
+    height: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;
     box-shadow: 0px 0px 40px rgba(127, 127, 127, 0.4);
     border-radius: 40px;
+    
+    @media (max-width: 1025px) {
+      width: 420px;
+      height: 500px;
+    }
 
     &__photo {
-      width: 540px;
-      height: 350px;
+      width: 100%;
+      // height: 100%;
       object-fit: fill;
     }
 
     &__text {
       width: 420px;
+
+      @media (max-width: 1025px) {
+        width: 360px;
+      }
     }
 
     &__title {
@@ -188,11 +249,22 @@ export default {
       font-size: 32px;
       line-height: 39px;
       color: #8E9AD5;
+
+      @media (max-width: 1025px) {
+        padding-top: 15px;
+        font-size: 26px;
+        line-height: 38px;
+      }
     }
 
     &__description {
       font-size: 26px;
       line-height: 30px;
+
+      @media (max-width: 1025px) {
+        font-size: 22px;
+        line-height: 28px;
+      }
     }
   }
 
@@ -201,6 +273,10 @@ export default {
     display: flex;
     justify-content: space-between;
     padding: 0 30px;
+
+    @media (max-width: 1025px) {
+      padding: 0 20px;
+    }
 
     &__button-1,
     &__button-2,
@@ -212,6 +288,12 @@ export default {
       font-size: 28px;
       line-height: 34px;
       color: #FFFFFF;
+
+      @media (max-width: 1025px) {
+        width: 150px;
+        height: 70px;
+        font-size: 22px;
+      }
     }
 
     &__button-1 {
@@ -225,5 +307,49 @@ export default {
     &__button-3 {
       background: linear-gradient(90deg, #FFD748 0.02%, rgba(195, 199, 11, 0.96) 99.97%, #CAC6AB 99.98%, #D3E9E1 99.99%);
     }
+  }
+
+  .card-success-first-pill {
+    overflow: hidden;
+    transform: translateX(-350px) rotate(-390deg);
+    transition: all 300ms;
+  }
+
+  .card-success-second-pill {
+    overflow: hidden;
+    transform: translateY(-400px) rotate(-380deg);
+    transition: all 300ms;
+  }
+
+  .card-success-third-pill {
+    overflow: hidden;
+    transform: translateX(350px) rotate(390deg);
+    transition: all 300ms;
+  }
+
+  .mark-success {
+    position: absolute;
+    width: 360px;
+    height: 100px;
+    font-size: 52px;
+    line-height: 80px;
+    top: 280px;
+    text-align: center;
+    transform: rotate(-30deg);
+  }
+
+  .first-pill-success {
+    color: #8049C7;
+    border: 8px solid #8049C7;
+  }
+
+  .second-pill-success {
+    color: #169AE4;
+    border: 8px solid #169AE4;
+  }
+
+  .third-pill-success {
+    color: #FFB903;
+    border: 8px solid #FFB903;
   }
 </style>

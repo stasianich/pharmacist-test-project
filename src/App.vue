@@ -20,4 +20,8 @@
   a {
     text-decoration: none;
   }
+
+  button {
+    padding: 0;
+  }
 </style>

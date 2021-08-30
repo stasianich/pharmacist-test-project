@@ -57,7 +57,7 @@
             {{ count }}
           </span>
           <span class="count__max">
-            / 5
+            {{ ` / ${patientsAmount}` }}
           </span>
         </span>
       </section>
@@ -69,6 +69,7 @@ export default {
   props: [
     'pills',
     'count',
+    'patientsAmount',
   ],
 }
 </script>
@@ -77,12 +78,20 @@ export default {
   .sidebar {
     width: 33%;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background: linear-gradient(63.53deg, rgba(45, 133, 80, 0.7) 16.62%, rgba(94, 110, 194, 0.7) 83.38%);
+    z-index: 2;
   }
 
   .nav {
     padding-left: 50px;
     padding-top: 70px;
+
+    @media (max-width: 1025px) {
+      padding-top: 40px;
+    }
 
     &__home {
       display: inline-block;
@@ -91,6 +100,11 @@ export default {
       background: url(../assets/images/Game/btn_home.svg) no-repeat center;
       background-size: cover;
       margin-right: 35px;
+
+      @media (max-width: 1025px) {
+        width: 50px;
+        height: 50px;
+      }
     }
 
     &__retry {
@@ -98,8 +112,13 @@ export default {
       width: 70px;
       height: 70px;
       background: url(../assets/images/Game/btn_retry.svg) no-repeat center;
-      // background-size: cover;
       background-size: 198px 198px;
+
+      @media (max-width: 1025px) {
+        width: 50px;
+        height: 50px;
+        background-size: 146px 146px;
+      }
     }
   }
 
@@ -107,11 +126,21 @@ export default {
     margin-top: 290px;
     margin-left: 40px;
 
+    @media (max-width: 1025px) {
+      margin-top: 190px;
+    }
+
     &__title {
       font-size: 36px;
       line-height: 44px;
       color: #FFFFFF;
       margin-bottom: 30px;
+
+      @media (max-width: 1025px) {
+        font-size: 26px;
+        line-height: 34px;
+        margin-bottom: 20px;
+      }
     }
 
     &__rating-board {
@@ -121,6 +150,10 @@ export default {
       row-gap: 40px;
       column-gap: 20px;
       margin-right: 30px;
+
+      @media (max-width: 1025px) {
+        row-gap: 20px;
+      }
     }
   }
 
@@ -134,12 +167,24 @@ export default {
     box-shadow: 0px 0px 50px rgba(131, 42, 64, 0.4);
     border-radius: 40px;
 
+    @media (max-width: 1025px) {
+      width: 130px;
+      height: 60px;
+      padding: 7px;
+    }
+
     &__count {
       width: 80px;
       text-align: center;
       font-size: 48px;
       line-height: 59px;
       color: #424242;
+
+      @media (max-width: 1025px) {
+        width: 60px;
+        font-size: 38px;
+        line-height: 48px;
+      }
     }
   }
 
@@ -152,9 +197,15 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 180px;
     color: #FFFFFF;
     background-color: rgba(255, 255, 255, 0.15);
+    text-align: center;
+
+    @media (max-width: 1025px) {
+      height: 120px;
+      font-size: 30px;
+      line-height: 40px;
+    }
   }
 
   .count {
