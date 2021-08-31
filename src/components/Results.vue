@@ -87,7 +87,7 @@ export default {
     display: flex;
     justify-content: space-between;
 
-    @media (max-width: 700px) {
+    @media (max-width: 740px) {
       flex-direction: column;
     }
   }
@@ -99,18 +99,18 @@ export default {
     padding-top: 70px;
     padding-left: 70px;
 
-    @media (max-width: 700px) {
+    @media (max-width: 740px) {
       max-width: 700px;
       padding-left: 0;
       padding-top: 20px;
     }
 
-    @media (min-width: 701px) and (max-width: 1023px) {
+    @media (min-width: 741px) and (max-width: 1023px) {
       padding-top: 20px;
       padding-left: 30px;
     }
 
-    @media (min-width: 701px) and (max-height: 930px) {
+    @media (min-width: 741px) and (max-height: 930px) {
       padding-top: 20px;
       padding-left: 30px;
     }
@@ -158,18 +158,18 @@ export default {
       box-shadow: 0 0 15px #A8A8A8;
     }
 
-    @media (max-width: 700px) {
+    @media (max-width: 740px) {
       margin: 50px auto;
     }
 
-    @media (min-width: 701px) and (max-width: 1023px) {
+    @media (min-width: 741px) and (max-width: 1023px) {
       width: 200px;
       font-size: 18px;
       margin-top: 120px;
       margin-left: 30px;
     }
 
-    @media (min-width: 701px) and (max-height: 930px) {
+    @media (min-width: 741px) and (max-height: 930px) {
       width: 200px;
       font-size: 18px;
       margin-top: 120px;
@@ -183,17 +183,17 @@ export default {
     flex-direction: column;
     row-gap: 40px;
 
-    @media (max-width: 700px) {
+    @media (max-width: 740px) {
       margin-left: 0;
       padding: 0 8px;
     }
 
-    @media (min-width: 701px) and (max-width: 1025px) {
+    @media (min-width: 741px) and (max-width: 1025px) {
       margin-left: 30px;
       row-gap: 30px;
     }
 
-    @media (min-width: 701px) and (max-height: 930px) {
+    @media (min-width: 741px) and (max-height: 930px) {
       margin-left: 30px;
       row-gap: 30px;
     }
@@ -309,15 +309,15 @@ export default {
     &__image {
       height: 820px;
 
-      @media (max-width: 700px) {
+      @media (max-width: 740px) {
         display: none;
       }
 
-      @media (min-width: 701px) and (max-width: 1025px) {
+      @media (min-width: 741px) and (max-width: 1025px) {
         height: 400px;
       }
 
-      @media (min-width: 701px) and (max-height: 930px) {
+      @media (min-width: 741px) and (max-height: 930px) {
         height: 450px;
       }
     }

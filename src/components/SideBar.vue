@@ -85,7 +85,7 @@ export default {
     background: linear-gradient(63.53deg, rgba(45, 133, 80, 0.7) 16.62%, rgba(94, 110, 194, 0.7) 83.38%);
     z-index: 2;
 
-    @media (max-width: 700px) {
+    @media (max-width: 740px) {
       width: 100vw;
       height: 100%;
     }
@@ -158,15 +158,15 @@ export default {
     margin-top: 290px;
     margin-left: 40px;
 
-    @media (max-width: 700px) {
+    @media (max-width: 740px) {
       margin-top: 40px;
     }
 
-    @media (min-width: 701px) and (max-width: 1023px) {
+    @media (min-width: 741px) and (max-width: 1023px) {
       margin-top: 190px;
     }
 
-    @media (min-width: 701px) and (max-height: 930px) {
+    @media (min-width: 741px) and (max-height: 930px) {
       margin-top: 190px;
     }
 
@@ -197,7 +197,7 @@ export default {
       column-gap: 20px;
       margin-right: 30px;
 
-      @media (max-width: 700px) {
+      @media (max-width: 740px) {
         margin-bottom: 20px;
       }
 

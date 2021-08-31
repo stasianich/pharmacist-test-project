@@ -27,10 +27,12 @@
           }"
       >
         <img
-          v-bind:src="patients[count].photo"
+          v-bind:src="this.patients[this.count].photo"
           alt="Patient`s photo"
           class="patient-card__photo"
+          v-if="this.patients[this.count].photo"
         >
+
         <div class="patient-card__text">
             <h3 class="patient-card__title">
             {{ patients[count].name}}
@@ -92,7 +94,7 @@ export default {
         {
           id: 1,
           name: "Марія, 19 років",
-          photo: require("../assets/images/Game/patients/Maria.png"),
+          photo: require("../assets/images/Game/patients/Maria.jpg"),
           description: "Бабуся приймає брендовий препарат "
             + "від болю в суглобах, він допомагає, але занадто "
             + "дорогий. У Вас є якісний аналог з нижчою ціною? "
@@ -101,7 +103,7 @@ export default {
         {
           id: 2,
           name: "Степан, 61 рік",
-          photo: require("../assets/images/Game/patients/Stepan.png"),
+          photo: require("../assets/images/Game/patients/Stepan.jpg"),
           description: "Спросоння відсунув гарячий чайник рукою "
             + "та обпікся. У Вас всі ліки від опіків такі дорогі? "
             + "Можна хороший препарат недорого?"
@@ -109,7 +111,7 @@ export default {
         {
           id: 3,
           name: "Любов, 58 років",
-          photo: require("../assets/images/Game/patients/Lubov.png"),
+          photo: require("../assets/images/Game/patients/Lubov.jpg"),
           description: "Лікар призначив препарат від артеріальної "
             + "гіпертензії, а бренд дорого коштує. Тому мені "
             + "потрібен аналог з хорошою ефективністю та приємною ціною."
@@ -117,14 +119,14 @@ export default {
         {
           id: 4,
           name: "Олександр, 20 років",
-          photo: require("../assets/images/Game/patients/Oleksandr.png"),
+          photo: require("../assets/images/Game/patients/Oleksandr.jpg"),
           description: "Порекомендуйте ефективний препарат "
             + "від болю в горлі за розумну ціну."
         },
         {
           id: 5,
           name: "Ірина, 55 років",
-          photo: require("../assets/images/Game/patients/Irina.png"),
+          photo: require("../assets/images/Game/patients/Irina.jpg"),
           description: "У мене часто невралгії, лікар призначив "
             + "вітаміни групи В. Мені потрібен "
             + "якісний аналог за прийнятною ціною."
@@ -214,7 +216,7 @@ export default {
       if (Math.abs(xDifferent) > Math.abs(yDifferent)) {
         if (xDifferent > 0) {
           this.updateBoard(3); // swipe right
-        } else {
+        } else if (xDifferent < 0) {
           this.updateBoard(1); // swipe left
         }
       } else if (Math.abs(xDifferent) < Math.abs(yDifferent)) {
@@ -236,11 +238,11 @@ export default {
     display: flex;
     background-color: #FFFFFF;
 
-    @media (max-width: 700px) {
+    @media (max-width: 740px) {
       flex-direction: column;
     }
 
-    @media (min-width: 701px) and (min-width: 1880px) {
+    @media (min-width: 741px) and (min-width: 1880px) {
       margin: 0 auto;
     }
   }
@@ -254,7 +256,7 @@ export default {
     justify-content: space-between;
     align-items: center;
 
-    @media (max-width: 700px) {
+    @media (max-width: 740px) {
       width: 100vw;
     }
 
@@ -279,39 +281,39 @@ export default {
     box-shadow: 0px 0px 40px rgba(127, 127, 127, 0.4);
     border-radius: 40px;
 
-    @media (max-width: 700px) {
+    @media (max-width: 740px) {
       width: 300px;
       height: 520px;
       margin-bottom: 40px;
     }
     
-    @media (min-width: 701px) and (max-width: 1023px) {
+    @media (min-width: 741px) and (max-width: 1023px) {
       width: 420px;
       height: 500px;
     }
 
-    @media (min-width: 701px) and (max-height: 930px) {
+    @media (min-width: 741px) and (max-height: 930px) {
       width: 420px;
       height: 500px;
     }
 
     &__photo {
       width: 100%;
-      object-fit: fill;
+      border-radius: 40px 40px 0 0;
     }
 
     &__text {
       width: 420px;
 
-      @media (max-width: 700px) {
+      @media (max-width: 740px) {
         width: 250px;
       }
 
-      @media (min-width: 701px) and (max-width: 1023px) {
+      @media (min-width: 741px) and (max-width: 1023px) {
         width: 360px;
       }
 
-      @media (min-width: 701px) and (max-height: 930px) {
+      @media (min-width: 741px) and (max-height: 930px) {
         width: 360px;
       }
     }
@@ -357,7 +359,7 @@ export default {
     justify-content: space-between;
     padding: 0 30px;
 
-    @media (max-width: 700px) {
+    @media (max-width: 740px) {
       flex-direction: column;
       align-items: center;
       row-gap: 10px;
@@ -437,20 +439,39 @@ export default {
     top: 280px;
     text-align: center;
     transform: rotate(-30deg);
+
+    @media (max-width: 740px) {
+      width: 280px;
+      height: 80px;
+      font-size: 45px;
+      line-height: 60px;
+    }
   }
 
   .first-pill-success {
     color: #8049C7;
     border: 8px solid #8049C7;
+
+    @media (max-width: 740px) {
+      border-width: 6px;
+    }
   }
 
   .second-pill-success {
     color: #169AE4;
     border: 8px solid #169AE4;
+
+    @media (max-width: 740px) {
+      border-width: 6px;
+    }
   }
 
   .third-pill-success {
     color: #FFB903;
     border: 8px solid #FFB903;
+
+    @media (max-width: 740px) {
+      border-width: 6px;
+    }
   }
 </style>
