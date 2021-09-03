@@ -19,7 +19,7 @@
     <section class="main-board">
       <div
         class="patient-card"
-        @touchstart="touchStart"
+        @touchstart="handleSwipe"
         v-bind:class="{
             'card-success-first-pill': this.showMark === 'Препарат 1',
             'card-success-second-pill': this.showMark === 'Препарат 2',
@@ -86,6 +86,7 @@
 <script>
 import SideBar from '@/components/SideBar.vue';
 import Results from '@/components/Results.vue';
+import { Swiper } from '@/components/Swiper.js';
 
 export default {
   data() {
@@ -190,59 +191,41 @@ export default {
       clearTimeout();
     },
 
-    touchStart (touchEvent) {
-      if (touchEvent.changedTouches.length !== 1) {
-        return;
-      }
-      const posXStart = touchEvent.changedTouches[0].clientX;
-      const posYStart = touchEvent.changedTouches[0].clientY;
-
-      addEventListener('touchend',
-        (touchEvent) => this.touchEnd(touchEvent, posXStart, posYStart), {once: true}
-      );
-    },
-
-    touchEnd (touchEvent, posXStart, posYStart) {
-      if (touchEvent.changedTouches.length !== 1) {
-        return;
-      }
-
-      const posXEnd = touchEvent.changedTouches[0].clientX;
-      const posYEnd = touchEvent.changedTouches[0].clientY;
-
-      const xDifferent = posXEnd - posXStart;
-      const yDifferent = posYEnd - posYStart;
-
-      if (Math.abs(xDifferent) > Math.abs(yDifferent)) {
-        if (xDifferent > 0) {
-          this.updateBoard(3); // swipe right
-        } else if (xDifferent < 0) {
-          this.updateBoard(1); // swipe left
-        }
-      } else if (Math.abs(xDifferent) < Math.abs(yDifferent)) {
-        if (yDifferent < 0) {
-          this.updateBoard(2); // swipe up
-        } else {
-          return; // swipe down
-        }
-      }
-    },
+    handleSwipe(touchEvent) {
+      Swiper(touchEvent)
+        .then(direction => {
+          switch(direction) {
+            case 'right':
+              this.updateBoard(3);
+              break;
+            case 'left':
+              this.updateBoard(1);
+              break;
+            case 'up':
+              this.updateBoard(2);
+              break;
+          }
+        });
+    }
   }
 }
 </script>
 
 <style lang="scss">
+  @import "../assets/styles/_variables.scss";
+
   .game-page {
     width: 100vw;
     max-width: 2000px;
     display: flex;
     background-color: #FFFFFF;
 
-    @media (max-width: 740px) {
+    @media (max-width: $max-width-for-mobiles) {
       flex-direction: column;
     }
 
-    @media (min-width: 741px) and (min-width: 1880px) {
+    @media (min-width: $min-width-for-tablets)
+      and (min-width: $min-width-for-large-monitors) {
       margin: 0 auto;
     }
   }
@@ -256,16 +239,16 @@ export default {
     justify-content: space-between;
     align-items: center;
 
-    @media (max-width: 740px) {
+    @media (max-width: $max-width-for-mobiles) {
       width: 100vw;
     }
 
-    @media (max-width: 1023px) {
+    @media (max-width: $max-width-for-tablets) {
       padding-top: 80px;
       padding-bottom: 34px;
     }
 
-    @media (max-height: 930px) {
+    @media (max-height: $max-height-for-mobiles) {
       padding-top: 60px;
       padding-bottom: 34px;
     }
@@ -281,18 +264,20 @@ export default {
     box-shadow: 0px 0px 40px rgba(127, 127, 127, 0.4);
     border-radius: 40px;
 
-    @media (max-width: 740px) {
+    @media (max-width: $max-width-for-mobiles) {
       width: 300px;
       height: 520px;
       margin-bottom: 40px;
     }
     
-    @media (min-width: 741px) and (max-width: 1023px) {
+    @media (min-width: $min-width-for-tablets)
+      and (max-width: $max-width-for-tablets) {
       width: 420px;
       height: 500px;
     }
 
-    @media (min-width: 741px) and (max-height: 930px) {
+    @media (min-width: $min-width-for-tablets)
+      and (max-height: $max-height-for-mobiles) {
       width: 420px;
       height: 500px;
     }
@@ -305,15 +290,17 @@ export default {
     &__text {
       width: 420px;
 
-      @media (max-width: 740px) {
+      @media (max-width: $max-width-for-mobiles) {
         width: 250px;
       }
 
-      @media (min-width: 741px) and (max-width: 1023px) {
+      @media (min-width: $min-width-for-tablets)
+        and (max-width: $max-width-for-tablets) {
         width: 360px;
       }
 
-      @media (min-width: 741px) and (max-height: 930px) {
+      @media (min-width: $min-width-for-tablets)
+        and (max-height: $max-height-for-mobiles) {
         width: 360px;
       }
     }
@@ -324,13 +311,13 @@ export default {
       line-height: 39px;
       color: #8E9AD5;
 
-      @media (max-width: 1023px) {
+      @media (max-width: $max-width-for-tablets) {
         padding-top: 15px;
         font-size: 26px;
         line-height: 38px;
       }
 
-      @media (max-height: 930px) {
+      @media (max-height: $max-height-for-mobiles) {
         padding-top: 15px;
         font-size: 26px;
         line-height: 38px;
@@ -341,12 +328,12 @@ export default {
       font-size: 26px;
       line-height: 30px;
 
-      @media (max-width: 1023px) {
+      @media (max-width: $max-width-for-tablets) {
         font-size: 22px;
         line-height: 28px;
       }
 
-      @media (max-height: 930px) {
+      @media (max-height: $max-height-for-mobiles) {
         font-size: 22px;
         line-height: 28px;
       }
@@ -359,13 +346,13 @@ export default {
     justify-content: space-between;
     padding: 0 30px;
 
-    @media (max-width: 740px) {
+    @media (max-width: $max-width-for-mobiles) {
       flex-direction: column;
       align-items: center;
       row-gap: 10px;
     }
 
-    @media (max-width: 1023px) {
+    @media (max-width: $max-width-for-tablets) {
       padding: 0 20px;
     }
 
@@ -392,7 +379,7 @@ export default {
         font-size: 22px;
       }
 
-      @media (max-height: 930px) {
+      @media (max-height: $max-height-for-mobiles) {
         width: 250px;
         height: 70px;
         font-size: 22px;
@@ -440,7 +427,7 @@ export default {
     text-align: center;
     transform: rotate(-30deg);
 
-    @media (max-width: 740px) {
+    @media (max-width: $max-width-for-mobiles) {
       width: 280px;
       height: 80px;
       font-size: 45px;
@@ -452,7 +439,7 @@ export default {
     color: #8049C7;
     border: 8px solid #8049C7;
 
-    @media (max-width: 740px) {
+    @media (max-width: $max-width-for-mobiles) {
       border-width: 6px;
     }
   }
@@ -461,7 +448,7 @@ export default {
     color: #169AE4;
     border: 8px solid #169AE4;
 
-    @media (max-width: 740px) {
+    @media (max-width: $max-width-for-mobiles) {
       border-width: 6px;
     }
   }
@@ -470,7 +457,7 @@ export default {
     color: #FFB903;
     border: 8px solid #FFB903;
 
-    @media (max-width: 740px) {
+    @media (max-width: $max-width-for-mobiles) {
       border-width: 6px;
     }
   }

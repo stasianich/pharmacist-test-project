@@ -82,12 +82,14 @@ export default {
 </script>
 
 <style lang="scss">
+  @import "../assets/styles/_variables.scss";
+
   .results-page {
     height: 100vh;
     display: flex;
     justify-content: space-between;
 
-    @media (max-width: 740px) {
+    @media (max-width: $max-width-for-mobiles) {
       flex-direction: column;
     }
   }
@@ -99,18 +101,20 @@ export default {
     padding-top: 70px;
     padding-left: 70px;
 
-    @media (max-width: 740px) {
+    @media (max-width: $max-width-for-mobiles) {
       max-width: 700px;
       padding-left: 0;
       padding-top: 20px;
     }
 
-    @media (min-width: 741px) and (max-width: 1023px) {
+    @media (min-width: $min-width-for-tablets)
+      and (max-width: $max-width-for-tablets) {
       padding-top: 20px;
       padding-left: 30px;
     }
 
-    @media (min-width: 741px) and (max-height: 930px) {
+    @media (min-width: $min-width-for-tablets)
+      and (max-height: $max-height-for-mobiles) {
       padding-top: 20px;
       padding-left: 30px;
     }
@@ -130,12 +134,12 @@ export default {
       transform: scale(0.8);
     }
 
-    @media (max-width: 1023px) {
+    @media (max-width: $max-width-for-tablets) {
       margin-bottom: 100px;
       margin-left: 10px;
     }
 
-    @media (max-height: 930px) {
+    @media (max-height: $max-height-for-mobiles) {
       margin-bottom: 50px;
     }
   }
@@ -158,18 +162,20 @@ export default {
       box-shadow: 0 0 15px #A8A8A8;
     }
 
-    @media (max-width: 740px) {
+    @media (max-width: $max-width-for-mobiles) {
       margin: 50px auto;
     }
 
-    @media (min-width: 741px) and (max-width: 1023px) {
+    @media (min-width: $min-width-for-tablets)
+      and (max-width: $max-width-for-tablets) {
       width: 200px;
       font-size: 18px;
       margin-top: 120px;
       margin-left: 30px;
     }
 
-    @media (min-width: 741px) and (max-height: 930px) {
+    @media (min-width: $min-width-for-tablets)
+      and (max-height: $max-height-for-mobiles) {
       width: 200px;
       font-size: 18px;
       margin-top: 120px;
@@ -183,17 +189,19 @@ export default {
     flex-direction: column;
     row-gap: 40px;
 
-    @media (max-width: 740px) {
+    @media (max-width: $max-width-for-mobiles) {
       margin-left: 0;
       padding: 0 8px;
     }
 
-    @media (min-width: 741px) and (max-width: 1025px) {
+    @media (min-width: $min-width-for-tablets)
+      and (max-width: $max-width-for-tablets) {
       margin-left: 30px;
       row-gap: 30px;
     }
 
-    @media (min-width: 741px) and (max-height: 930px) {
+    @media (min-width: $min-width-for-tablets)
+      and (max-height: $max-height-for-mobiles) {
       margin-left: 30px;
       row-gap: 30px;
     }
@@ -218,11 +226,11 @@ export default {
       row-gap: 20px;
       color: #424242;
 
-      @media (max-width: 1023px) {
+      @media (max-width: $max-width-for-tablets) {
         row-gap: 10px;
       }
 
-      @media (max-height: 930px) {
+      @media (max-height: $max-height-for-mobiles) {
         row-gap: 10px;
       }
     }
@@ -233,12 +241,12 @@ export default {
       font-size: 48px;
       line-height: 59px;
 
-      @media (max-width: 1023px) {
+      @media (max-width: $max-width-for-tablets) {
         font-size: 34px;
         line-height: 50px;
       }
 
-      @media (max-height: 930px) {
+      @media (max-height: $max-height-for-mobiles) {
         font-size: 42px;
         line-height: 50px;
       }
@@ -259,12 +267,12 @@ export default {
       letter-spacing: 0.02em;
       color: #8E9AD5;
 
-      @media (max-width: 1023px) {
+      @media (max-width: $max-width-for-tablets) {
         font-size: 28px;
         line-height: 32px;
       }
 
-      @media (max-height: 930px) {
+      @media (max-height: $max-height-for-mobiles) {
         font-size: 28px;
         line-height: 32px;
       }
@@ -277,12 +285,12 @@ export default {
       letter-spacing: 0.02em;
       color: #8E9AD5;
 
-      @media (max-width: 1023px) {
+      @media (max-width: $max-width-for-tablets) {
         font-size: 28px;
         line-height: 32px;
       }
 
-      @media (max-height: 930px) {
+      @media (max-height: $max-height-for-mobiles) {
         font-size: 28px;
         line-height: 32px;
       }
@@ -293,12 +301,12 @@ export default {
       line-height: 29px;
       color: #424242;
 
-      @media (max-width: 1023px) {
+      @media (max-width: $max-width-for-tablets) {
         font-size: 20px;
         list-style: 26px;
       }
 
-      @media (max-height: 930px) {
+      @media (max-height: $max-height-for-mobiles) {
         font-size: 20px;
         list-style: 26px;
       }
@@ -309,15 +317,17 @@ export default {
     &__image {
       height: 820px;
 
-      @media (max-width: 740px) {
+      @media (max-width: $max-width-for-mobiles) {
         display: none;
       }
 
-      @media (min-width: 741px) and (max-width: 1025px) {
+      @media (min-width: $min-width-for-tablets)
+        and (max-width: $max-width-for-tablets) {
         height: 400px;
       }
 
-      @media (min-width: 741px) and (max-height: 930px) {
+      @media (min-width: $min-width-for-tablets)
+        and (max-height: $max-height-for-mobiles) {
         height: 450px;
       }
     }

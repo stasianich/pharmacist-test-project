@@ -76,6 +76,8 @@ export default {
 </script>
 
 <style lang="scss">
+  @import "../assets/styles/_variables.scss";
+
   .sidebar {
     width: 33vw;
     min-height: 100vh;
@@ -85,7 +87,7 @@ export default {
     background: linear-gradient(63.53deg, rgba(45, 133, 80, 0.7) 16.62%, rgba(94, 110, 194, 0.7) 83.38%);
     z-index: 2;
 
-    @media (max-width: 740px) {
+    @media (max-width: $max-width-for-mobiles) {
       width: 100vw;
       height: 100%;
     }
@@ -95,11 +97,11 @@ export default {
     padding-left: 50px;
     padding-top: 70px;
 
-    @media (max-width: 1023px) {
+    @media (max-width: $max-width-for-tablets) {
       padding-top: 40px;
     }
 
-    @media (max-height: 930px) {
+    @media (max-height: $max-height-for-mobiles) {
       padding-top: 40px;
     }
 
@@ -116,12 +118,12 @@ export default {
         box-shadow: 0 0 25px rgb(243, 177, 174);
       }
 
-      @media (max-width: 1023px) {
+      @media (max-width: $max-width-for-tablets) {
         width: 50px;
         height: 50px;
       }
 
-      @media (max-height: 930px) {
+      @media (max-height: $max-height-for-mobiles) {
         width: 50px;
         height: 50px;
       }
@@ -140,13 +142,13 @@ export default {
         box-shadow: 0 0 25px rgb(243, 177, 174);
       }
 
-      @media (max-width: 1023px) {
+      @media (max-width: $max-width-for-tablets) {
         width: 50px;
         height: 50px;
         background-size: 146px 146px;
       }
 
-      @media (max-height: 930px) {
+      @media (max-height: $max-height-for-mobiles) {
         width: 50px;
         height: 50px;
         background-size: 146px 146px;
@@ -158,15 +160,17 @@ export default {
     margin-top: 290px;
     margin-left: 40px;
 
-    @media (max-width: 740px) {
+    @media (max-width: $max-width-for-mobiles) {
       margin-top: 40px;
     }
 
-    @media (min-width: 741px) and (max-width: 1023px) {
+    @media (min-width: $min-width-for-tablets)
+      and (max-width: $max-width-for-tablets) {
       margin-top: 190px;
     }
 
-    @media (min-width: 741px) and (max-height: 930px) {
+    @media (min-width: $min-width-for-tablets)
+      and (max-height: $max-height-for-mobiles) {
       margin-top: 190px;
     }
 
@@ -176,13 +180,13 @@ export default {
       color: #FFFFFF;
       margin-bottom: 30px;
 
-      @media (max-width: 1023px) {
+      @media (max-width: $max-width-for-tablets) {
         font-size: 26px;
         line-height: 34px;
         margin-bottom: 20px;
       }
 
-      @media (max-height: 930px) {
+      @media (max-height: $max-height-for-mobiles) {
         font-size: 26px;
         line-height: 34px;
         margin-bottom: 20px;
@@ -197,15 +201,15 @@ export default {
       column-gap: 20px;
       margin-right: 30px;
 
-      @media (max-width: 740px) {
+      @media (max-width: $max-width-for-mobiles) {
         margin-bottom: 20px;
       }
 
-      @media (max-width: 1023px) {
+      @media (max-width: $max-width-for-tablets) {
         row-gap: 20px;
       }
 
-      @media (max-height: 930px) {
+      @media (max-height: $max-height-for-mobiles) {
         row-gap: 20px;
       }
     }
@@ -221,13 +225,13 @@ export default {
     box-shadow: 0px 0px 50px rgba(131, 42, 64, 0.4);
     border-radius: 40px;
 
-    @media (max-width: 1023px) {
+    @media (max-width: $max-width-for-tablets) {
       width: 130px;
       height: 60px;
       padding: 7px;
     }
 
-    @media (max-height: 930px) {
+    @media (max-height: $max-height-for-mobiles) {
       width: 130px;
       height: 60px;
       padding: 7px;
@@ -240,13 +244,13 @@ export default {
       line-height: 59px;
       color: #424242;
 
-      @media (max-width: 1023px) {
+      @media (max-width: $max-width-for-tablets) {
         width: 60px;
         font-size: 38px;
         line-height: 48px;
       }
 
-      @media (max-height: 930px) {
+      @media (max-height: $max-height-for-mobiles) {
         width: 60px;
         font-size: 38px;
         line-height: 48px;
@@ -267,13 +271,13 @@ export default {
     background-color: rgba(255, 255, 255, 0.15);
     text-align: center;
 
-    @media (max-width: 1023px) {
+    @media (max-width: $max-width-for-tablets) {
       height: 120px;
       font-size: 30px;
       line-height: 40px;
     }
 
-    @media (max-height: 930px) {
+    @media (max-height: $max-height-for-mobiles) {
       height: 120px;
       font-size: 30px;
       line-height: 40px;

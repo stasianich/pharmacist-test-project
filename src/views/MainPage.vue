@@ -18,6 +18,8 @@
 </template>
 
 <style lang="scss">
+  @import "../assets/styles/_variables.scss";
+
   .main-page {
     width: 100vw;
     height: 100vh;
@@ -42,7 +44,7 @@
     top: -30px;
     padding-bottom: 160px;
 
-    @media (max-width: 740px) {
+    @media (max-width: $max-width-for-mobiles) {
       width: 300px;
       height: 300px;
       left: 0;
@@ -50,13 +52,15 @@
       padding-bottom: 60px;
     }
 
-    @media (min-width: 741px) and (max-width: 1023px) {
+    @media (min-width: $min-width-for-tablets)
+      and (max-width: $max-width-for-tablets) {
       width: 560px;
       height: 560px;
       padding-bottom: 120px;
     }
 
-    @media (min-width: 741px) and (max-height: 930px) {
+    @media (min-width: $min-width-for-tablets)
+      and (max-height: $max-height-for-mobiles) {
       width: 560px;
       height: 560px;
       padding-bottom: 120px;
@@ -68,7 +72,7 @@
       flex-direction: column;
       align-items: baseline;
 
-      @media (max-width: 740px) {
+      @media (max-width: $max-width-for-mobiles) {
         max-width: 210px;
       }
     }
@@ -90,21 +94,23 @@
         box-shadow: 0 0 100px #8E9AD5;
       }
 
-      @media (max-width: 740px) {
+      @media (max-width: $max-width-for-mobiles) {
         width: 182px;
         height: 40px;
         font-size: 20px;
         line-height: 40px;
       }
 
-      @media (min-width: 741px) and (max-width: 1023px) {
+      @media (min-width: $min-width-for-tablets)
+        and (max-width: $max-width-for-tablets) {
         width: 252px;
         height: 50px;
         font-size: 26px;
         line-height: 50px;
       }
 
-      @media (min-width: 741px) and (max-height: 930px) {
+      @media (min-width: $min-width-for-tablets)
+        and (max-width: $max-width-for-tablets) {
         width: 252px;
         height: 50px;
         font-size: 26px;
@@ -122,17 +128,19 @@
         color: #FFFFFF;
         text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-        @media (max-width: 740px) {
+        @media (max-width: $max-width-for-mobiles) {
           font-size: 16px;
           line-height: 18px;
         }
 
-        @media (min-width: 741px) and (max-width: 1023px) {
+        @media (min-width: $min-width-for-tablets)
+          and (max-width: $max-width-for-tablets) {
           font-size: 30px;
           line-height: 36px;
         }
 
-        @media (min-width: 741px) and (max-height: 930px) {
+        @media (min-width: $min-width-for-tablets)
+          and (max-height: $max-height-for-mobiles) {
           font-size: 30px;
           line-height: 36px;
         }
@@ -145,19 +153,21 @@
         color: #FFFFFF;
         padding-bottom: 120px;
 
-        @media (max-width: 740px) {
+        @media (max-width: $max-width-for-mobiles) {
           font-size: 28px;
           line-height: 30px;
           padding-bottom: 20px;
         }
 
-        @media (min-width: 741px) and (max-width: 1023px) {
+        @media (min-width: $min-width-for-tablets)
+          and (max-width: $max-width-for-tablets) {
           font-size: 40px;
           line-height: 46px;
           padding-bottom: 70px;
         }
 
-        @media (min-width: 741px) and (max-height: 930px) {
+        @media (min-width: $min-width-for-tablets)
+          and (max-height: $max-height-for-mobiles) {
           font-size: 40px;
           line-height: 46px;
           padding-bottom: 70px;
