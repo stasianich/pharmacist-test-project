@@ -86,7 +86,7 @@
 <script>
 import SideBar from '@/components/SideBar.vue';
 import Results from '@/components/Results.vue';
-import { Swiper } from '@/components/Swiper.js';
+import { Swiper } from '@/helpers/Swiper.js';
 
 export default {
   data() {
