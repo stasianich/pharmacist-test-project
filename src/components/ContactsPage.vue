@@ -1,6 +1,6 @@
 <template>
-  <section class="accounting-page">
-    <div class="accounting-page__container">
+  <section class="contacts-page">
+    <div class="contacts-page__container">
       <PageNavigation v-bind:disablePage="'contacts'"/>
       <div class="contacts-card">
         <div class="contacts-card__text">
@@ -160,27 +160,8 @@ export default {
 
   $border-radius: 40px;
 
-  .accounting-page {
-    width: 100vw;
-    min-height: 100vh;
-    padding: 40px;
-    background: linear-gradient(63.53deg, rgba(45, 133, 80, 0.35) 16.62%, rgba(94, 110, 194, 0.35) 83.38%),
-                url(../assets/images/GameStartPage/bg.jpg) no-repeat;
-    background-size: cover;
-
-    &__container {
-      max-width: 1040px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-end;
-      gap: 40px;
-      margin: 0 auto;
-
-      @media (max-width: $min-width-for-tablets) {
-        gap: 30px;
-      }
-    }
+  .contacts-page {
+    @include static-page;
   }
 
   .contacts-card {
