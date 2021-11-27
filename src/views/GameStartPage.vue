@@ -9,7 +9,7 @@
           Помоги ФАРМАЦЕВТУ
         </h1>
       </section>
-      <router-link to="/game" class="title-circle__start-button">
+      <router-link to="/start-game/game" class="title-circle__start-button">
         Начать
       </router-link>
     </div>
@@ -24,7 +24,7 @@
     width: 100vw;
     height: 100vh;
     background: linear-gradient(63.53deg, rgba(45, 133, 80, 0.35) 16.62%, rgba(94, 110, 194, 0.35) 83.38%),
-                url(../assets/images/MainPage/doctor.jpg) no-repeat;
+                url(../assets/images/GameStartPage/doctor.jpg) no-repeat;
     background-size: cover;
   }
 

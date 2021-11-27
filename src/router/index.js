@@ -1,14 +1,40 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import MainPage from '../views/MainPage.vue';
+import HomePage from '../views/HomePage.vue';
+import GameStartPage from '../views/GameStartPage.vue';
 
 const routes = [
   {
     path: '/',
-    name: 'MainPage',
-    component: MainPage
+    name: 'HomePage',
+    component: HomePage
   },
   {
-    path: '/game',
+    path: '/start-game',
+    name: 'GameStartPage',
+    component: GameStartPage
+  },
+  {
+    path: '/accounting-page', // HERE
+    name: 'AccountingPage',
+    component: GameStartPage
+  },
+  {
+    path: '/news-page', // HERE
+    name: 'NewsPage',
+    component: GameStartPage
+  },
+  {
+    path: '/training-page', // HERE
+    name: 'TraiiningPage',
+    component: GameStartPage
+  },
+  {
+    path: '/contacts-page', // HERE
+    name: 'ContactsPage',
+    component: GameStartPage
+  },
+  {
+    path: '/start-game/game',
     name: 'Game',
     component: () => import('../views/Game.vue')
   },
