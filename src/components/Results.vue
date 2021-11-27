@@ -50,7 +50,7 @@
         v-on:click="$emit('reset-game')"
         class="try-again-button"
       >
-        Попробовать ещё
+        Спробувати ще
       </div>
     </section>
 

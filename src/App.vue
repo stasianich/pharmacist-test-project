@@ -22,6 +22,15 @@
     color: black;
   }
 
+  ul {
+    padding-left: 0;
+    margin: 0;
+  }
+
+  li {
+    list-style-type: none;
+  }
+
   button {
     padding: 0;
     border: 0;

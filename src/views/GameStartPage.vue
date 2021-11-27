@@ -3,14 +3,14 @@
     <div class="title-circle">
       <section class="title-circle__text">
         <div class="text__say-hello">
-          Добро пожаловать в игру
+          Ласкаво просимо до гри
         </div>
         <h1 class="text__game-name">
-          Помоги ФАРМАЦЕВТУ
+          Допоможи ФАРМАЦЕВТУ
         </h1>
       </section>
       <router-link to="/start-game/game" class="title-circle__start-button">
-        Начать
+        Почати
       </router-link>
     </div>
   </section>

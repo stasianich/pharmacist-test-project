@@ -2,33 +2,33 @@
   <section class="home-page">
     <div class="home-page__container">
       <div
-        v-for="(post, index) in this.posts" :key="index"
-        :style="{backgroundImage: `url(${post.photo})`}"
-        class="section-card"
+        v-for="(section, index) in this.sections" :key="index"
+        :style="{backgroundImage: `url(${section.photo})`}"
+        class="home-page-section"
       >
         <router-link
-          :to="{path: post.url}" class="section-card__text"
+          :to="{path: section.url}"
+          class="home-page-section__text"
         >
-          <h3 class="section-card__title">
-            {{ post.title }}
+          <h3 class="home-page-section__title">
+            {{ section.title }}
           </h3>
           <article
-            class="section-card__description"
+            class="home-page-section__description"
           >
-            {{ post.description}}
+            {{ section.description}}
           </article>
         </router-link>
       </div>
     </div>
   </section>
-  <router-view/>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      posts: [
+      sections: [
         {
           id: 101,
           title: "Бухгалтерія",
@@ -70,7 +70,6 @@ export default {
 }
 </script>
 
-
 <style lang="scss">
   @import "../assets/styles/_variables.scss";
 
@@ -105,7 +104,7 @@ export default {
     }
   }
 
-  .section-card {
+  .home-page-section {
     position: relative;
     width: 500px;
     height: 250px;
