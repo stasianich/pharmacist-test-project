@@ -1,10 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomePage from '../views/HomePage.vue';
 import GameStartPage from '../views/GameStartPage.vue';
-import AccountingPage from '../components/AccountingPage.vue';
-// import NewsPage from '../components/NewsPage.vue';
-// import TrainingPage from '../components/TrainingPage.vue';
-import ContactsPage from '../components/ContactsPage.vue';
+import AccountingPage from '../components/Pages/AccountingPage.vue';
+import NewsPage from '../components/Pages/NewsPage.vue';
+// import TrainingPage from '../components/Pages/TrainingPage.vue';
+import ContactsPage from '../components/Pages/ContactsPage.vue';
 
 const routes = [
   {
@@ -23,10 +23,9 @@ const routes = [
     component: AccountingPage
   },
   {
-    path: '/news-page', // HERE
+    path: '/news-page',
     name: 'NewsPage',
-    // component: NewsPage
-    component: GameStartPage
+    component: NewsPage
   },
   {
     path: '/training-page', // HERE
