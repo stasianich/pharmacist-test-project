@@ -1,7 +1,8 @@
 import axios from "axios";
 
-const url = 'https://graduation-project-aee72-default-rtdb.europe-west1.firebasedatabase.app/posts.json';
+// Realtime Database
+const BASE_URL = 'https://graduation-project-aee72-default-rtdb.europe-west1.firebasedatabase.app';
 
 export const getPosts = () => {
-  return axios.get(url)
+  return axios.get(`${BASE_URL}/posts.json`)
 }
