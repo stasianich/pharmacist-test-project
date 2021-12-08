@@ -13,7 +13,7 @@
 
     <section class="status">
       <h2 class="status__title">
-        Параметры:
+        Параметри:
       </h2>
       <div class="status__rating-board">
         <div class="rating">
@@ -51,7 +51,7 @@
 
     <section class="queue">
         <span class="queue__title">
-          Осталось в очереди:
+          Залишилось в черзі:
         </span>
         <span class="queue__count count">
           <span class="count__current-count">
